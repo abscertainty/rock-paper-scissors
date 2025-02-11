@@ -21,5 +21,43 @@ function getHumanChoice(arrayOfChoices) {
     }
 }
 
+function playRound(humanChoice, computerChoice) {
+    if (humanChoice === computerChoice) {
+        console.log("It's a draw!");
+    } else {
+        switch (humanChoice) {
+            case 'rock':
+                if (computerChoice === 'scissors') {
+                    console.log("You Win! Rock beats Scissors.");
+                    humanScore++;
+                } else if (computerChoice === 'paper') {
+                    console.log("You Lose! Paper beats Rock.");
+                    computerScore++
+                }
+                break;
+            case 'paper':
+                if (computerChoice === 'scissors') {
+                    console.log("You Lose! Scissors beat Paper.");
+                    computerScore++;
+                } else if (computerChoice === 'rock') {
+                    console.log("You Win! Paper beats Rock.");
+                    humanScore++
+                }
+                break;
+            case 'scissors':
+                if (computerChoice === 'rock') {
+                    console.log("You Lose! Rock beat Scissors.");
+                    computerScore++;
+                } else if (computerChoice === 'paper') {
+                    console.log("You Win! Scissors beats Paper.");
+                    humanScore++
+                }
+                break;
+        }
+    }
+}
+
+playRound(getHumanChoice(choices), getComputerChoice(choices))
+
 
 
