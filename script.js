@@ -1,6 +1,8 @@
 let choices = ['Rock', 'Paper', 'Scissors']
 let randomComputerChoice
 let promptedHumanChoice
+let computerScore = 0
+let humanScore = 0
 
 function getComputerChoice(arrayOfChoices) {
     if (arrayOfChoices.length == 0 || arrayOfChoices.length > 3) return
