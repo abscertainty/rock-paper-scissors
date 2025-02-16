@@ -9,18 +9,6 @@ function getComputerChoice(arrayOfChoices) {
     return arrayOfChoices[randomComputerChoice]
 }
 
-function getHumanChoice(arrayOfChoices) {
-    if (arrayOfChoices.length == 0 || arrayOfChoices.length > 3) return
-    while(1) {
-        let promptedHumanChoice = prompt("Choose Rock, Paper or Scissors!").toLowerCase().trim()
-        for (let index = 0; index < arrayOfChoices.length; index++) {
-            if (promptedHumanChoice === arrayOfChoices[index]) {
-                return promptedHumanChoice
-            }
-        }
-    }
-}
-
 function playRound(humanChoice, computerChoice) {
     if (humanChoice === computerChoice) {
         console.log("It's a draw!");
@@ -57,7 +45,12 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 
+const choicesDiv = document.querySelector('.choices');
+choicesDiv.addEventListener('click', sendChoiceByHuman);
 
+function sendChoiceByHuman(eventInfo) {
+    playRound(eventInfo.target['id'], getComputerChoice(choices));
+}
 
 
 
