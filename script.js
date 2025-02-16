@@ -10,46 +10,85 @@ function getComputerChoice(arrayOfChoices) {
 }
 
 function playRound(humanChoice, computerChoice) {
+    const ROUND_RESULT_PREFIX = 'Round Result: ';
+
+    const roundResultPara = document.querySelector('.round-result');
+    const runningScorePara = document.querySelector('.running-score');
+
     if (humanChoice === computerChoice) {
-        console.log("It's a draw!");
+        roundResultPara.textContent = ROUND_RESULT_PREFIX + "It's a draw!";
     } else {
         switch (humanChoice) {
             case 'rock':
                 if (computerChoice === 'scissors') {
-                    console.log("You Win! Rock beats Scissors.");
+                    roundResultPara.textContent = ROUND_RESULT_PREFIX + "Round Won! Rock beats Scissors.";
                     humanScore++;
                 } else if (computerChoice === 'paper') {
-                    console.log("You Lose! Paper beats Rock.");
+                    roundResultPara.textContent = ROUND_RESULT_PREFIX + "Round Lost! Paper beats Rock.";
                     computerScore++
                 }
                 break;
             case 'paper':
                 if (computerChoice === 'scissors') {
-                    console.log("You Lose! Scissors beat Paper.");
+                    roundResultPara.textContent = ROUND_RESULT_PREFIX + "Round Lost! Scissors beat Paper.";
                     computerScore++;
                 } else if (computerChoice === 'rock') {
-                    console.log("You Win! Paper beats Rock.");
+                    roundResultPara.textContent = ROUND_RESULT_PREFIX + "Round Won! Paper beats Rock.";
                     humanScore++
                 }
                 break;
             case 'scissors':
                 if (computerChoice === 'rock') {
-                    console.log("You Lose! Rock beat Scissors.");
+                    roundResultPara.textContent = ROUND_RESULT_PREFIX + "Round Lost! Rock beat Scissors.";
                     computerScore++;
                 } else if (computerChoice === 'paper') {
-                    console.log("You Win! Scissors beats Paper.");
+                    roundResultPara.textContent = ROUND_RESULT_PREFIX + "Round Won! Scissors beats Paper.";
                     humanScore++
                 }
                 break;
         }
     }
+
+    runningScorePara.textContent = `You ${humanScore} - ${computerScore} Computer`;
+
+    if (humanScore >= 5 || computerScore >= 5) announceWinnerAndEndGame();
 }
 
 const choicesDiv = document.querySelector('.choices');
-choicesDiv.addEventListener('click', sendChoiceByHuman);
+choicesDiv.addEventListener('click', getHumanChoice);
 
-function sendChoiceByHuman(eventInfo) {
+function getHumanChoice(eventInfo) {
     playRound(eventInfo.target['id'], getComputerChoice(choices));
+}
+
+function announceWinnerAndEndGame() {
+    let resultText = '';
+    const resultPara = document.createElement('p');
+    const scoresDiv = document.querySelector('.scores');
+
+    if (humanScore > computerScore) {
+        resultText += 'You Win! ';
+        resultPara.style.cssText = 'color: #58f60f;';
+    } else {
+        resultText += 'You Lose! ';
+        resultPara.style.cssText = 'color: #e1071d';
+    }
+
+    resultPara.textContent = resultText;
+    resultPara.classList.add('result-text');
+    scoresDiv.removeChild(scoresDiv.firstElementChild);
+    scoresDiv.insertBefore(resultPara, scoresDiv.firstChild);
+
+    choicesDiv.removeEventListener('click', getHumanChoice);
+
+    const buttons = document.querySelectorAll('.btn');
+
+    buttons.forEach(disableButton);
+}
+
+function disableButton(btn) {
+    btn.classList.remove('btn');
+    btn.classList.add('inactive-button');
 }
 
 

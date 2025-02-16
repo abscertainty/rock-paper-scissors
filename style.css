@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     background-color: rgb(54, 0, 93);
     display: flex;
@@ -41,9 +45,10 @@ body {
 .choices {
     display: flex;
     gap: 16px;
+    height: 70px;
 }
 
-.choices button {
+.choices .btn {
     padding: 12px 20px;
     border: 0;
     border-radius: 8px;
@@ -51,4 +56,45 @@ body {
     font-size: 36px;
     min-width: 224px;
     font-weight: 600;
+}
+
+.choices .btn:hover {
+    border: white solid;
+    color: white;
+    background-color: rgb(54, 0, 93);
+}
+
+.scores {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.scores .round-result,
+.scores .running-score {
+    color: white;
+    font-size: 28px;
+    margin: 12px 0px;
+}
+
+.scores .running-score {
+    font-size: 32px;
+}
+
+.inactive-button {
+    padding: 12px 20px;
+    border: rgb(95, 95, 95) solid;
+    color: rgb(48, 48, 48);
+    background-color: rgb(95, 95, 95);
+    border-radius: 8px;
+    font-size: 36px;
+    min-width: 224px;
+    font-weight: 600;
+}
+
+.result-text {
+    font-size: 46px;
+    margin: 12px 0px 4px 0px;
+    padding: 0px;
+    font-weight: 900;
 }
