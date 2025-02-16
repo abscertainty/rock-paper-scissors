@@ -1,8 +1,11 @@
 body {
     background-color: rgb(54, 0, 93);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 100vh;
+    gap: 32px;
 }
 
 .title {
@@ -13,9 +16,39 @@ body {
     gap: 10px;
 }
 
-.title h1,
-.title h2 {
+.title p {
     color: white;
     margin: 0px;
     padding: 0px;
+}
+
+.title p:nth-child(1) {
+    font-size: 36px;
+}
+
+.title p:nth-child(2) {
+    font-size: 54px;
+}
+
+.title p:nth-child(3) {
+    font-size: 24px;
+    color: white;
+    margin: 12px 0px 4px 0px;
+    padding: 0px;
+    font-weight: 900;
+}
+
+.choices {
+    display: flex;
+    gap: 16px;
+}
+
+.choices button {
+    padding: 12px 20px;
+    border: 0;
+    border-radius: 8px;
+    color: rgb(54, 0, 93);
+    font-size: 36px;
+    min-width: 224px;
+    font-weight: 600;
 }
