@@ -1,0 +1,21 @@
+body {
+    background-color: rgb(54, 0, 93);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.title h1,
+.title h2 {
+    color: white;
+    margin: 0px;
+    padding: 0px;
+}
